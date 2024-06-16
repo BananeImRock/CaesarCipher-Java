@@ -1,0 +1,46 @@
+/**
+ * Hier wird verschlüsselt, wie zu Caesers Zeiten.
+ * 
+ * @author (BananeImRock) 
+ * @version (17.06.2024)
+ */
+public class CaesarRad
+{
+     
+    public static String encrypt(String text, int shift) {
+        String result = ""; //leerer text. Muss von Karsten gefüllt werden!
+        
+        
+         for (int karsten=0; karsten < text.length(); karsten++) {
+        char unverschluesselter_buchstabe=text.charAt(karsten); //da, wo Karsten grade ist
+        
+          if (Character.isUpperCase(unverschluesselter_buchstabe)) {
+            char verschluesselter_buchstabe= (char) (((unverschluesselter_buchstabe - 'A' + shift) %26) + 'A'); //Zahlen in der Ascii Tabelle 
+            result = result + verschluesselter_buchstabe;
+        
+        }
+        
+          else if (Character.isLowerCase(unverschluesselter_buchstabe)) {
+            char verschluesselter_buchstabe=(char) (((unverschluesselter_buchstabe - 'a' +shift) %26) + 'a'); //Zahlen in der Ascii Tabelle
+            result = result + verschluesselter_buchstabe;
+            
+            
+        }
+        
+        else {
+            result = result + unverschluesselter_buchstabe; //für Leerzeichen, Punkte und Kommata
+        }
+        
+         
+    }
+    
+    return result;
+   }
+   
+   public static String decrypt (String text, int shift) { //verschlüsselter text entschlüsseln zu einem wunderschönen, herrlichen, bezaubernden und überaus tollen Text  
+       return encrypt (text, 26-shift); 
+
+   }
+   
+
+}
